@@ -1,0 +1,1509 @@
+
+<!--
+  Archivo: Rutina Arantza.html
+  Descripción: Plan maestro de entrenamiento boutique para Arantza con diseño editorial contemporáneo, selector de tema oscuro/claro, tarjetas con bordes punteados intercalados, ejercicios completos con imágenes biomecánicas y plan de nutrición/metodología.
+  Fecha de última modificación: 2026-10-02
+  Autor: Leonardo Escobar
+-->
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rutina Arantza — Lower Body Atelier</title>
+  <meta name="description" content="Plan personalizado de entrenamiento y recomposición corporal para Arantza. Enfoque boutique en glúteo, pierna, postura y proporción de cintura." />
+
+  <!-- Tipografías Premium -->
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root, [data-theme="light"] {
+      --bg: #fcf7f4;
+      --surface: #fffaf7;
+      --surface-2: #f4e8e0;
+      --text: #271d1b;
+      --muted: #786864;
+      --accent: #be5f5a;
+      --accent-2: #e9a96b;
+      --line: #dbc7bd;
+      --line-dashed: rgba(190, 95, 90, 0.45);
+      --inverse: #fffaf7;
+      --shadow: 0 18px 44px rgba(48,23,17,.08);
+      --card-bg: #ffffff;
+      --badge-bg: rgba(190, 95, 90, 0.12);
+      --radius: 24px;
+      --font-display: 'Clash Display', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --bg: #140f10;
+      --surface: #1c1517;
+      --surface-2: #261d20;
+      --text: #f8ece8;
+      --muted: #ba9f98;
+      --accent: #f08a7d;
+      --accent-2: #ffbe7a;
+      --line: #3a2d31;
+      --line-dashed: rgba(240, 138, 125, 0.45);
+      --inverse: #140f10;
+      --shadow: 0 20px 50px rgba(0,0,0,.35);
+      --card-bg: #1e1719;
+      --badge-bg: rgba(240, 138, 125, 0.16);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(240,138,125,.14), transparent 30%),
+        radial-gradient(circle at 90% 15%, rgba(255,190,122,.12), transparent 24%),
+        linear-gradient(180deg, transparent, rgba(255,255,255,.01));
+      background-attachment: fixed;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* Sticky Navigation */
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in srgb, var(--bg) 84%, transparent);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+    }
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 0;
+    }
+    .brand {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid;
+      place-items: center;
+      box-shadow: 0 6px 18px rgba(240, 138, 125, 0.35);
+    }
+    .logo svg {
+      width: 24px;
+      height: 24px;
+      color: #fff;
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+    }
+
+    .menu {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+    .menu a {
+      transition: color 0.2s ease;
+    }
+    .menu a:hover {
+      color: var(--accent);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .pill, .ghost {
+      min-height: 42px;
+      padding: 0 20px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+    }
+    .pill {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(240, 138, 125, 0.3);
+    }
+    .pill:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(240, 138, 125, 0.4);
+    }
+    .ghost {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--text);
+    }
+    .ghost:hover {
+      background: var(--surface-2);
+      border-color: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 85vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 40px;
+      padding: 56px 0 40px;
+    }
+    .label {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 6.5vw, 92px);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      margin-top: 14px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      max-width: 58ch;
+      color: var(--muted);
+      margin-top: 20px;
+      font-size: 1.05rem;
+    }
+    .actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    /* Showcase Panel with Dashed Accents */
+    .showcase {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent), color-mix(in srgb, var(--surface-2) 95%, transparent));
+      border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      border-radius: 36px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .phone {
+      border-radius: 28px;
+      padding: 20px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+    }
+    .phone-card {
+      background: var(--surface);
+      padding: 18px 20px;
+      border-radius: 20px;
+      border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      margin-bottom: 14px;
+      transition: transform 0.25s ease;
+    }
+    .phone-card:last-child { margin-bottom: 0; }
+    .phone-card:hover { transform: translateY(-2px); }
+    .phone-card h3 {
+      font-size: 1.25rem;
+      font-family: var(--font-display);
+      margin: 8px 0 4px;
+    }
+    .phone-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 72px 0 36px;
+    }
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4.5vw, 56px);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+    .head p {
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--badge-bg);
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    /* TARJETAS CUADRADAS CON LÍNEAS INTERCALADAS (DASHED) */
+    .dashed-card {
+      background: var(--surface);
+      border: 2px dashed var(--line-dashed);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .dashed-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .dashed-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dashed-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    /* Macros & Metrics Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .metric-card {
+      background: var(--surface);
+      border: 2px dashed var(--line-dashed);
+      border-radius: 22px;
+      padding: 24px 18px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease;
+    }
+    .metric-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .metric-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      line-height: 1;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .metric-label {
+      font-size: 0.88rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    /* DÍAS DE ENTRENAMIENTO — LISTAS CON LÍNEAS INTERCALADAS */
+    .day-container {
+      background: var(--surface);
+      border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+      border-radius: 32px;
+      padding: 34px;
+      margin-bottom: 34px;
+      box-shadow: var(--shadow);
+      page-break-inside: avoid;
+    }
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding-bottom: 18px;
+      border-bottom: 2px dashed var(--line-dashed);
+      margin-bottom: 24px;
+    }
+    .day-title {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Items con líneas divisorias intercaladas */
+    .exercise-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .exercise-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+      transition: background 0.2s ease;
+    }
+    .exercise-item:last-child {
+      border-bottom: none;
+    }
+    .exercise-main {
+      flex: 1;
+    }
+    .exercise-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .ex-chip {
+      display: inline-flex;
+      align-items: center;
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      color: var(--accent);
+      border: 1px solid color-mix(in srgb, var(--accent) 24%, transparent);
+      padding: 3px 10px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .exercise-desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .exercise-desc p {
+      margin-top: 4px;
+    }
+    .exercise-num {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      color: var(--accent-2);
+      line-height: 1;
+      padding-top: 2px;
+    }
+
+    /* Abdomen Finisher Box */
+    .abdomen-box {
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--accent) 8%, transparent);
+      border: 2px dashed var(--line-dashed);
+    }
+    .abdomen-box h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .abdomen-box p {
+      color: var(--text);
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    /* FOTOS CUADRADAS CON BORDES DE LÍNEAS INTERCALADAS (DASHED) */
+    .day-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 2px dashed var(--line-dashed);
+    }
+    .img-placeholder {
+      background: #ffffff;
+      border: 2px dashed var(--line-dashed);
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      padding: 6px;
+    }
+    .img-placeholder:hover {
+      border-color: var(--accent);
+      transform: scale(1.02);
+    }
+    .img-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      display: block;
+    }
+    .img-caption {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #999;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    /* Grids de contenido */
+    .cards-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .cards-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    /* Listas con viñetas estilizadas */
+    ul.styled-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 10px 0 0;
+    }
+    ul.styled-list li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 0.95rem;
+      margin: 8px 0;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+    ul.styled-list li:before {
+      content: '✦';
+      position: absolute;
+      left: 2px;
+      top: 0;
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+
+    /* Meal Plan Rows */
+    .meal-block {
+      padding: 16px 0;
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+    }
+    .meal-block:last-child { border-bottom: none; }
+    .meal-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .meal-desc {
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    /* Quote Banner */
+    .cta-banner {
+      padding: 38px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 18%, transparent), color-mix(in srgb, var(--accent-2) 16%, transparent));
+      border: 2px dashed var(--line-dashed);
+      text-align: center;
+      margin: 40px 0;
+      box-shadow: var(--shadow);
+    }
+    .cta-banner p {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3.5vw, 36px);
+      line-height: 1.15;
+      max-width: 24ch;
+      margin: 0 auto;
+      color: var(--text);
+    }
+
+    /* Signature Centrada */
+    .coach-signature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 50px;
+      padding-top: 36px;
+      border-top: 2px dashed var(--line-dashed);
+      text-align: center;
+    }
+    .coach-label {
+      font-size: 1.1rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .coach-name {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.4rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.02em;
+    }
+
+    /* Floating Print Button */
+    .floating-print {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 99;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      border: none;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 14px 38px rgba(240, 138, 125, 0.45);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s ease;
+    }
+    .floating-print:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 18px 45px rgba(240, 138, 125, 0.55);
+    }
+    .floating-print svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    footer {
+      padding: 30px 0 60px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 36px; }
+      .metrics-grid, .cards-grid-2, .cards-grid-3 { grid-template-columns: 1fr; }
+      .menu { display: none; }
+      .day-container { padding: 24px 18px; }
+      .head h2 { font-size: 2rem; }
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        background-image: none !important;
+      }
+      .top, .floating-print, .actions, .nav-actions {
+        display: none !important;
+      }
+      .wrap { max-width: 100% !important; padding: 0 !important; }
+      .showcase, .phone, .day-container, .dashed-card, .metric-card {
+        box-shadow: none !important;
+        background: #ffffff !important;
+        border: 1px solid #ccc !important;
+        page-break-inside: avoid;
+      }
+      .day-images { page-break-inside: avoid; }
+      .img-placeholder {
+        border: 1px dashed #999 !important;
+        background: #fafafa !important;
+      }
+      .coach-signature { page-break-inside: avoid; }
+    }
+  
+    /* MAXIMUM SECURITY DRM CSS */
+    * {
+      -webkit-touch-callout: none !important; 
+      -webkit-user-select: none !important; 
+      -moz-user-select: none !important; 
+      -ms-user-select: none !important; 
+      user-select: none !important; 
+      -webkit-tap-highlight-color: transparent !important;
+    }
+    
+    img {
+      pointer-events: none !important; 
+      -webkit-user-drag: none !important;
+    }
+
+    @media print {
+      html, body, * {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+      }
+      body::before {
+        content: 'ESTE DOCUMENTO ESTÁ PROTEGIDO POR DERECHOS DE AUTOR.';
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        font-size: 24px;
+        text-align: center;
+        margin-top: 50px;
+        color: black;
+      }
+    }
+
+    .watermark-drm {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 999999;
+      background-image: repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(255,255,255,0.03) 100px, rgba(255,255,255,0.03) 200px);
+    }
+    
+    .drm-blackout {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #000;
+      z-index: 999999999;
+      display: none;
+      color: white;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 1.5rem;
+      padding: 20px;
+    }
+
+    /* ADVANCED PRINT BLOCKER */
+    @media print {
+      * { display: none !important; opacity: 0 !important; visibility: hidden !important; color: transparent !important; background: transparent !important; }
+      html, body { display: block !important; background: #fff !important; }
+      body::before {
+        content: "ERROR: ACCIÓN BLOQUEADA POR DERECHOS DE AUTOR." !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #000 !important;
+        font-size: 20px !important;
+        text-align: center !important;
+        margin-top: 100px !important;
+      }
+    }
+      </style>
+</head>
+<body>
+  <!-- QUICK LOOK / NO-JS PROTECTOR -->
+  <div id="js-warning" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: #000; color: #fff; text-align: center; padding: 30px; font-family: sans-serif; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99999999999;">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#be5f5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 20px;">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+    </svg>
+    <h2 style="margin: 0 0 15px 0; font-size: 24px;">Visor No Autorizado</h2>
+    <p style="font-size: 16px; color: #aaa; max-width: 400px; line-height: 1.5;">
+      Por motivos de seguridad y derechos de autor, esta rutina no puede visualizarse dentro del visor de archivos de WhatsApp.<br><br>
+      Por favor, presiona el botón de <b>Compartir</b> (el ícono de la flecha) y selecciona <b>"Abrir en Safari"</b> o <b>"Abrir en Chrome"</b> para ver tu plan.
+    </p>
+  </div>
+  <div id="secure-content" style="display: none;">
+
+  
+        <a class="pill" href="#entrenamiento">Ver Rutina</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div>
+        <div class="label">
+          <span>✦</span> Programa de Recomposición Personalizada
+        </div>
+        <h1>Rutina de <span>Arantza</span></h1>
+        <p>
+          Un plan de alta precisión diseñado para desarrollar <strong>glúteos redondos y firmes</strong>, tonificar piernas, mejorar la postura general y acentuar visualmente una <strong>cintura más estrecha</strong> mediante una estructura balanceada.
+        </p>
+        <div class="actions">
+          <a class="pill" href="#entrenamiento">Ir a los Días de Entrenamiento</a>
+          
+        </div>
+      </div>
+
+      <div class="showcase">
+        <div class="phone">
+          <div class="phone-card">
+            <span class="badge">Objetivo Principal</span>
+            <h3>Glúteos Grandes & Piernas Firmes</h3>
+            <p>Sobrecarga progresiva, alta tensión mecánica y selección biomecánica de movimientos.</p>
+          </div>
+          <div class="phone-card">
+            <span class="badge">Armonía Corporal</span>
+            <h3>Cintura Visualmente Pequeña</h3>
+            <p>Trabajo estratégico de espalda alta, hombros, abdomen y estabilidad de tronco.</p>
+          </div>
+          <div class="phone-card">
+            <span class="badge">Constancia & Ciencia</span>
+            <h3>5 Días de Alta Precisión</h3>
+            <p>Frecuencia 2 en glúteo/pierna con días de torso y recuperación estructurada.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESTRUCTURA BASE -->
+    <section id="estructura">
+      <div class="head">
+        <div>
+          <span class="badge">Estructura Base</span>
+          <h2>Parámetros del Programa</h2>
+        </div>
+        <p>Mantenemos los movimientos con los que ya tienes adherencia y disfrutas, integrando una progresión estructurada para medir resultados semana a semana.</p>
+      </div>
+
+      <!-- Tarjetas cuadradas métricas con líneas intercaladas -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-num">Intermedio</div>
+          <div class="metric-label">Nivel de Entrenamiento</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">5 Días</div>
+          <div class="metric-label">Frecuencia Semanal</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">2 Horas</div>
+          <div class="metric-label">Tiempo Máx. por Sesión</div>
+        </div>
+      </div>
+
+      <!-- Tarjeta cuadrada con líneas intercaladas para nota clave -->
+      <div class="dashed-card">
+        <h3>🎯 Filosofía de Progresión</h3>
+        <p>
+          Esta rutina mantiene los ejercicios con los que ya estás acostumbrada y que te gustan, pero vamos a aplicar una progresión más estructurada para que podamos medir tu avance y seguir desarrollando principalmente glúteos y piernas de forma sostenida.
+        </p>
+      </div>
+    </section>
+
+    <!-- ENTRENAMIENTO COMPLETO (5 DÍAS) -->
+    <section id="entrenamiento">
+      <div class="head">
+        <div>
+          <span class="badge">Entrenamiento</span>
+          <h2>Días de Entrenamiento</h2>
+        </div>
+        <p>Cada ejercicio cuenta con sus series, repeticiones recomendadas, tiempos de descanso, indicaciones técnicas e ilustraciones biomecánicas correspondientes.</p>
+      </div>
+
+      <!-- LUNES -->
+      <div class="day-container">
+        <div class="day-header">
+          <div class="day-title">🍑 LUNES — GLÚTEOS + FEMORALES</div>
+          <span class="badge">Día 01 · Glúteo Dominante</span>
+        </div>
+
+        <div class="exercise-list">
+          <!-- Ejercicio 1 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">1. Hip Thrust</div>
+              <div class="ex-chip">3 series — 10 / 8 / 8 reps &nbsp;|&nbsp; Descanso: 2–3 min</div>
+              <div class="exercise-desc">
+                <p>Comienza con un peso que puedas controlar para aproximadamente 10 repeticiones. Aumenta ligeramente el peso en las siguientes series siempre que puedas mantener una buena técnica.</p>
+                <p>En la parte superior, contrae el glúteo sin exagerar el arqueo de la espalda.</p>
+              </div>
+            </div>
+            <div class="exercise-num">01</div>
+          </div>
+
+          <!-- Ejercicio 2 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">2. Búlgaras</div>
+              <div class="ex-chip">3 series — 10 reps por pierna &nbsp;|&nbsp; Descanso: 90–120 s</div>
+              <div class="exercise-desc">
+                <p>Controla la bajada y busca estabilidad. Mantén el movimiento controlado y utiliza una profundidad que puedas realizar correctamente.</p>
+              </div>
+            </div>
+            <div class="exercise-num">02</div>
+          </div>
+
+          <!-- Ejercicio 3 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">3. Peso muerto rumano</div>
+              <div class="ex-chip">3 series — 10 / 8 / 6 reps &nbsp;|&nbsp; Descanso: 2–3 min</div>
+              <div class="exercise-desc">
+                <p>Aumenta progresivamente el peso.</p>
+                <p>Mantén la espalda neutra, lleva la cadera hacia atrás y controla especialmente la bajada. No necesitas bajar más de lo que tu movilidad te permita manteniendo una buena posición.</p>
+              </div>
+            </div>
+            <div class="exercise-num">03</div>
+          </div>
+
+          <!-- Ejercicio 4 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">4. Patada en polea a 45°</div>
+              <div class="ex-chip">3 series — 12–15 reps por pierna &nbsp;|&nbsp; Descanso: 60–90 s</div>
+              <div class="exercise-desc">
+                <p>Movimiento controlado. Evita utilizar impulso o arquear demasiado la zona lumbar.</p>
+              </div>
+            </div>
+            <div class="exercise-num">04</div>
+          </div>
+
+          <!-- Ejercicio 5 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">5. Femoral sentado o acostado</div>
+              <div class="ex-chip">3 series — 8–12 reps &nbsp;|&nbsp; Descanso: 90 s</div>
+              <div class="exercise-desc">
+                <p>Utiliza una carga que te permita trabajar cerca del fallo manteniendo el control.</p>
+                <p>En la última serie puedes acercarte más al fallo si la técnica se mantiene correcta.</p>
+              </div>
+            </div>
+            <div class="exercise-num">05</div>
+          </div>
+        </div>
+
+        <!-- Abdomen Lunes -->
+        <div class="abdomen-box">
+          <h4>🔥 ABDOMEN</h4>
+          <p><strong>Crunch inverso:</strong> 3 × 15 &nbsp;|&nbsp; <em>Descanso: 45–60 s</em></p>
+          <p><strong>Plancha frontal:</strong> 3 × 30–45 s &nbsp;|&nbsp; <em>Descanso: 45–60 s</em></p>
+        </div>
+
+        <!-- Galería de fotos cuadradas con líneas intercaladas -->
+        <div class="day-images">
+          <div class="img-placeholder"><img src="imagenes_arantza/1_hip_thrust.jpg" alt="Hip Thrust" /><div class="img-caption">Hip Thrust</div></div>
+          <div class="img-placeholder"><img src="imagenes_arantza/2_bulgaras.jpg" alt="Búlgaras" /><div class="img-caption">Búlgaras</div></div>
+          <div class="img-placeholder"><img src="imagenes_arantza/3_deadlift.jpg" alt="Peso muerto rumano" /><div class="img-caption">Peso muerto rumano</div></div>
+        </div>
+      </div>
+
+      <!-- MARTES -->
+      <div class="day-container">
+        <div class="day-header">
+          <div class="day-title">🏋️‍♀️ MARTES — ESPALDA + BÍCEPS</div>
+          <span class="badge">Día 02 · Torso & Espalda</span>
+        </div>
+
+        <div class="exercise-list">
+          <!-- Ejercicio 1 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">1. Jalón en polea abierto</div>
+              <div class="ex-chip">3 series — 10–12 reps &nbsp;|&nbsp; Descanso: 90–120 s</div>
+              <div class="exercise-desc">
+                <p>Lleva los codos hacia abajo y evita balancear el cuerpo para mover más peso.</p>
+              </div>
+            </div>
+            <div class="exercise-num">01</div>
+          </div>
+
+          <!-- Ejercicio 2 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">2. Remo con mancuerna</div>
+              <div class="ex-chip">3 series — 10–12 reps por lado &nbsp;|&nbsp; Descanso: 90 s</div>
+              <div class="exercise-desc">
+                <p>Mantén el torso estable y controla tanto la subida como la bajada.</p>
+              </div>
+            </div>
+            <div class="exercise-num">02</div>
+          </div>
+
+          <!-- Ejercicio 3 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">3. Pullover con cuerda</div>
+              <div class="ex-chip">3 series — 10–15 reps &nbsp;|&nbsp; Descanso: 60–90 s</div>
+              <div class="exercise-desc">
+                <p>Mantén tensión durante todo el movimiento y evita convertirlo en un movimiento de brazos.</p>
+              </div>
+            </div>
+            <div class="exercise-num">03</div>
+          </div>
+
+          <!-- Ejercicio 4 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">4. Pájaros con mancuernas</div>
+              <div class="ex-chip">3 series — 12–15 reps &nbsp;|&nbsp; Descanso: 60–90 s</div>
+              <div class="exercise-desc">
+                <p>Prioriza el control y no la cantidad de peso.</p>
+                <p>Este ejercicio ayudará a trabajar la parte posterior del hombro y musculatura de la espalda alta para equilibrar tu postura.</p>
+              </div>
+            </div>
+            <div class="exercise-num">04</div>
+          </div>
+
+          <!-- Ejercicio 5 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">5. Remo en polea</div>
+              <div class="ex-chip">3 series — 10–12 reps &nbsp;|&nbsp; Descanso: 90–120 s</div>
+              <div class="exercise-desc">
+                <p>Controla el movimiento y evita utilizar impulso con el torso.</p>
+              </div>
+            </div>
+            <div class="exercise-num">05</div>
+          </div>
+
+          <!-- Ejercicio 6 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">6. Martillos</div>
+              <div class="ex-chip">3 series — 10–12 reps &nbsp;|&nbsp; Descanso: 60–90 s</div>
+              <div class="exercise-desc">
+                <p>Mantén los codos relativamente estables y controla la bajada.</p>
+              </div>
+            </div>
+            <div class="exercise-num">06</div>
+          </div>
+        </div>
+
+        <!-- Galería de fotos cuadradas con líneas intercaladas -->
+        <div class="day-images">
+          <div class="img-placeholder"><img src="imagenes_arantza/4_lat_pulldown.jpg" alt="Jalón en polea" /><div class="img-caption">Jalón en polea</div></div>
+          <div class="img-placeholder"><img src="imagenes_arantza/5_dumbbell_row.jpg" alt="Remo con mancuerna" /><div class="img-caption">Remo con mancuerna</div></div>
+        </div>
+      </div>
+
+      <!-- MIÉRCOLES -->
+      <div class="day-container">
+        <div class="day-header">
+          <div class="day-title">🦵 MIÉRCOLES — CUÁDRICEPS + PANTORRILLA</div>
+          <span class="badge">Día 03 · Cuádriceps Fuerte</span>
+        </div>
+
+        <div class="exercise-list">
+          <!-- Ejercicio 1 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">1. Sentadilla</div>
+              <div class="ex-chip">3 series — 10 / 8 / 6 reps &nbsp;|&nbsp; Descanso: 2–3 min</div>
+              <div class="exercise-desc">
+                <p>Comienza con una carga que puedas controlar para aproximadamente 10 repeticiones y aumenta progresivamente.</p>
+                <p>La técnica siempre tendrá prioridad sobre el peso.</p>
+              </div>
+            </div>
+            <div class="exercise-num">01</div>
+          </div>
+
+          <!-- Ejercicio 2 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">2. Extensión de rodilla</div>
+              <div class="ex-chip">3 series — 10–15 reps &nbsp;|&nbsp; Descanso: 60–90 s</div>
+              <div class="exercise-desc">
+                <p>Trabaja cerca del fallo.</p>
+                <p>En la última serie puedes llegar al fallo técnico si mantienes el movimiento controlado.</p>
+              </div>
+            </div>
+            <div class="exercise-num">02</div>
+          </div>
+
+          <!-- Ejercicio 3 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">3. Zancada</div>
+              <div class="ex-chip">3 series — 10 reps por pierna &nbsp;|&nbsp; Descanso: 90–120 s</div>
+              <div class="exercise-desc">
+                <p>Mantén estabilidad y controla cada repetición.</p>
+              </div>
+            </div>
+            <div class="exercise-num">03</div>
+          </div>
+
+          <!-- Ejercicio 4 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">4. Prensa de pierna</div>
+              <div class="ex-chip">3 series — 10 / 8 / 6 reps &nbsp;|&nbsp; Descanso: 2–3 min</div>
+              <div class="exercise-desc">
+                <p>Aumenta progresivamente el peso sin sacrificar profundidad ni control.</p>
+              </div>
+            </div>
+            <div class="exercise-num">04</div>
+          </div>
+
+          <!-- Ejercicio 5 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">5. Elevación de pantorrilla sentada con mancuerna</div>
+              <div class="ex-chip">3 series — 15–20 reps &nbsp;|&nbsp; Descanso: 60–90 s</div>
+              <div class="exercise-desc">
+                <p>Realiza un recorrido controlado y evita rebotar.</p>
+              </div>
+            </div>
+            <div class="exercise-num">05</div>
+          </div>
+        </div>
+
+        <!-- Abdomen Miércoles -->
+        <div class="abdomen-box">
+          <h4>🔥 ABDOMEN</h4>
+          <p><strong>Plancha frontal:</strong> 3 × 30–45 s</p>
+          <p><strong>Russian Twist con peso:</strong> 3 × 20 — <em>10 por lado</em></p>
+          <p style="margin-top: 6px; font-size: 0.88rem; color: var(--muted);">Realízalos de forma controlada. El objetivo no es mover el peso rápidamente, sino mantener el control del tronco.</p>
+        </div>
+
+        <!-- Galería de fotos cuadradas con líneas intercaladas -->
+        <div class="day-images">
+          <div class="img-placeholder"><img src="imagenes_arantza/6_squat.jpg" alt="Sentadilla" /><div class="img-caption">Sentadilla</div></div>
+          <div class="img-placeholder"><img src="imagenes_arantza/7_leg_press.jpg" alt="Prensa de pierna" /><div class="img-caption">Prensa de pierna</div></div>
+        </div>
+      </div>
+
+      <!-- JUEVES -->
+      <div class="day-container">
+        <div class="day-header">
+          <div class="day-title">🏋️‍♀️ JUEVES — HOMBROS + PECHO + TRÍCEPS</div>
+          <span class="badge">Día 04 · Tren Superior & Deltoides</span>
+        </div>
+
+        <div class="exercise-list">
+          <!-- Ejercicio 1 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">1. Press militar</div>
+              <div class="ex-chip">3 series — 8–12 reps &nbsp;|&nbsp; Descanso: 90–120 s</div>
+              <div class="exercise-desc">
+                <p>Utiliza una carga que puedas controlar sin compensar con la espalda.</p>
+              </div>
+            </div>
+            <div class="exercise-num">01</div>
+          </div>
+
+          <!-- Ejercicio 2 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">2. Elevaciones frontales</div>
+              <div class="ex-chip">3 series — 10–15 reps &nbsp;|&nbsp; Descanso: 60–90 s</div>
+              <div class="exercise-desc">
+                <p>Controla la subida y especialmente la bajada.</p>
+              </div>
+            </div>
+            <div class="exercise-num">02</div>
+          </div>
+
+          <!-- Ejercicio 3 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">3. Apertura en contractor de pecho</div>
+              <div class="ex-chip">3 series — 10–12 reps &nbsp;|&nbsp; Descanso: 60–90 s</div>
+              <div class="exercise-desc">
+                <p>Mantén el movimiento controlado y evita utilizar impulso.</p>
+              </div>
+            </div>
+            <div class="exercise-num">03</div>
+          </div>
+
+          <!-- Ejercicio 4 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">4. Elevaciones laterales</div>
+              <div class="ex-chip">3 series — 12–15 reps &nbsp;|&nbsp; Descanso: 60–90 s</div>
+              <div class="exercise-desc">
+                <p>Utiliza un peso que te permita mantener el control durante toda la serie.</p>
+              </div>
+            </div>
+            <div class="exercise-num">04</div>
+          </div>
+
+          <!-- Ejercicio 5 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">5. Extensión de tríceps</div>
+              <div class="ex-chip">3 series — 10–15 reps &nbsp;|&nbsp; Descanso: 60–90 s</div>
+              <div class="exercise-desc">
+                <p>Controla especialmente la fase de regreso.</p>
+              </div>
+            </div>
+            <div class="exercise-num">05</div>
+          </div>
+        </div>
+
+        <!-- Galería de fotos cuadradas con líneas intercaladas -->
+        <div class="day-images">
+          <div class="img-placeholder"><img src="imagenes_arantza/8_press_militar.jpg" alt="Press militar" /><div class="img-caption">Press militar</div></div>
+          <div class="img-placeholder"><img src="imagenes_arantza/9_elevaciones_laterales.jpg" alt="Elevaciones laterales" /><div class="img-caption">Elevaciones laterales</div></div>
+        </div>
+      </div>
+
+      <!-- VIERNES -->
+      <div class="day-container">
+        <div class="day-header">
+          <div class="day-title">🍑 VIERNES — PIERNA COMPLETA</div>
+          <span class="badge">Día 05 · Frecuencia 2 Lower</span>
+        </div>
+
+        <div class="exercise-list">
+          <!-- Ejercicio 1 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">1. Sentadilla</div>
+              <div class="ex-chip">3 series — 10 / 8 / 8 reps &nbsp;|&nbsp; Descanso: 2–3 min</div>
+              <div class="exercise-desc">
+                <p>Comienza con una carga controlada y aumenta progresivamente cuando la técnica lo permita.</p>
+              </div>
+            </div>
+            <div class="exercise-num">01</div>
+          </div>
+
+          <!-- Ejercicio 2 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">2. Peso muerto rumano</div>
+              <div class="ex-chip">3 series — 10 / 8 / 6 reps &nbsp;|&nbsp; Descanso: 2–3 min</div>
+              <div class="exercise-desc">
+                <p>Mantén el control de la cadera y la espalda durante todo el movimiento.</p>
+              </div>
+            </div>
+            <div class="exercise-num">02</div>
+          </div>
+
+          <!-- Ejercicio 3 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">3. Hip Thrust</div>
+              <div class="ex-chip">3 series — 10 / 8 / 6 reps &nbsp;|&nbsp; Descanso: 2–3 min</div>
+              <div class="exercise-desc">
+                <p>Aumenta progresivamente la carga manteniendo una buena contracción de glúteos.</p>
+              </div>
+            </div>
+            <div class="exercise-num">03</div>
+          </div>
+
+          <!-- Ejercicio 4 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">4. Abductor</div>
+              <div class="ex-chip">3 series — 15–20 reps &nbsp;|&nbsp; Descanso: 60–90 s</div>
+              <div class="exercise-desc">
+                <p>Mantén tensión constante y evita utilizar impulso.</p>
+              </div>
+            </div>
+            <div class="exercise-num">04</div>
+          </div>
+
+          <!-- Ejercicio 5 -->
+          <div class="exercise-item">
+            <div class="exercise-main">
+              <div class="exercise-title">5. Aductor</div>
+              <div class="ex-chip">3 series — 15–20 reps &nbsp;|&nbsp; Descanso: 60–90 s</div>
+              <div class="exercise-desc">
+                <p>Controla tanto la apertura como el regreso.</p>
+              </div>
+            </div>
+            <div class="exercise-num">05</div>
+          </div>
+        </div>
+
+        <!-- Galería de fotos cuadradas con líneas intercaladas -->
+        <div class="day-images">
+          <div class="img-placeholder"><img src="imagenes_arantza/10_squat_2.jpg" alt="Sentadilla" /><div class="img-caption">Sentadilla</div></div>
+          <div class="img-placeholder"><img src="imagenes_arantza/11_abductor.jpg" alt="Abductor" /><div class="img-caption">Abductor</div></div>
+          <div class="img-placeholder"><img src="imagenes_arantza/12_aductor.jpg" alt="Aductor" /><div class="img-caption">Aductor</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METODOLOGÍA & PROGRESIÓN -->
+    <section id="metodologia">
+      <div class="head">
+        <div>
+          <span class="badge">Metodología</span>
+          <h2>¿Cómo vamos a progresar?</h2>
+        </div>
+        <p>Entender cómo progresar garantiza resultados sin estancamientos ni lesiones innecesarias.</p>
+      </div>
+
+      <!-- Tarjeta principal de progresión con líneas intercaladas -->
+      <div class="dashed-card" style="margin-bottom: 24px;">
+        <h3>📈 Pirámide Descendente Controlada</h3>
+        <p>
+          En los ejercicios principales utilizaremos principalmente una progresión descendente de repeticiones mientras aumentamos la carga. Por ejemplo: <strong style="color:var(--accent);">10 → 8 → 6</strong>.
+        </p>
+        <p style="margin-top: 10px;">
+          La primera serie comienza con un peso que puedas controlar correctamente. Después aumentamos ligeramente la carga y reducimos las repeticiones. La última serie será la más pesada, siempre que puedas realizarla con buena técnica.
+        </p>
+        <p style="margin-top: 10px;">No quiero que aumentes peso solamente por levantar más. Quiero que progreses manteniendo:</p>
+        
+        <ul class="styled-list">
+          <li>Buena técnica en todo el rango.</li>
+          <li>Control del movimiento y tempo.</li>
+          <li>Rango de movimiento adecuado y seguro.</li>
+          <li>Buena estabilidad pélvica y de columna.</li>
+          <li>Ejecución consistente repetición tras repetición.</li>
+        </ul>
+        <p style="margin-top: 14px;">
+          Si puedes completar todas las repeticiones fácilmente, podremos aumentar ligeramente la carga en la siguiente sesión. Si no puedes mantener la técnica, mantenemos o reducimos el peso.
+        </p>
+      </div>
+
+      <!-- Tarjetas cuadradas con líneas intercaladas: Intensidad, Calentamiento y Cardio -->
+      <div class="cards-grid-2">
+        <div class="dashed-card">
+          <h3>🔥 Intensidad & RIR</h3>
+          <p>
+            No todas las series tienen que llegar al fallo. En la mayoría de los ejercicios trabajaremos aproximadamente a <strong>1–3 repeticiones del fallo (RIR 1–3)</strong>. Esto significa que terminas la serie sintiendo que todavía podrías realizar algunas repeticiones más con buena técnica.
+          </p>
+          <p style="margin-top: 10px;">En ejercicios más seguros y aislados, como:</p>
+          <ul class="styled-list">
+            <li>Extensión de rodilla</li>
+            <li>Femoral</li>
+            <li>Abductor y Aductor</li>
+            <li>Elevaciones laterales</li>
+          </ul>
+          <p style="margin-top: 10px;">
+            podemos acercarnos más al fallo, especialmente en la última serie. En ejercicios grandes (sentadilla, peso muerto rumano, búlgaras o hip thrust), priorizaremos el control y la técnica.
+          </p>
+        </div>
+
+        <div class="dashed-card">
+          <h3>⚡ Calentamiento & Cardio</h3>
+          <p>
+            <strong>Calentamiento:</strong> Antes de comenzar cada entrenamiento: <strong>5–10 minutos de actividad ligera</strong>. Después realiza series de aproximación antes de los ejercicios principales para preparar el movimiento y encontrar la carga adecuada sin fatigarte.
+          </p>
+          <h3 style="margin-top: 22px; font-size: 1.25rem;">🏃‍♀️ Cardio Opcional</h3>
+          <p>
+            El cardio será <strong>opcional</strong> y dependerá de cómo te estés recuperando:
+          </p>
+          <ul class="styled-list">
+            <li>2–3 veces por semana</li>
+            <li>15–25 minutos de duración</li>
+            <li>Intensidad moderada</li>
+          </ul>
+          <p style="margin-top: 10px;">
+            Preferentemente después del entrenamiento o separado de la sesión. No queremos cardio excesivo porque nuestro objetivo principal es que puedas recuperarte y progresar en fuerza y masa muscular.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONSIDERACIONES & OBJETIVOS -->
+    <section id="objetivos">
+      <div class="head">
+        <div>
+          <span class="badge">Estrategia</span>
+          <h2>Consideraciones & Visión</h2>
+        </div>
+        <p>Factores clave que diferencian un proceso guiado con empatía y ciencia de una rutina genérica.</p>
+      </div>
+
+      <div class="cards-grid-2">
+        <!-- Ciclo Menstrual -->
+        <div class="dashed-card">
+          <h3>🩷 Sobre tu Ciclo Menstrual</h3>
+          <p>
+            Tu rendimiento y cómo percibes el entrenamiento pueden variar durante el ciclo menstrual. No significa que tengamos que cambiar automáticamente toda la rutina dependiendo de la fase en la que estés. Lo importante es que me comuniques cómo te sientes.
+          </p>
+          <p style="margin-top: 10px;">Si en alguna sesión experimentas:</p>
+          <ul class="styled-list">
+            <li>Cólicos fuertes</li>
+            <li>Fatiga importante</li>
+            <li>Dolor muscular o articular inusual</li>
+            <li>Menor rendimiento de lo habitual</li>
+            <li>Alguna molestia que afecte tu entrenamiento</li>
+          </ul>
+          <p style="margin-top: 12px;">
+            Me avisas y podemos ajustar la sesión. No necesitas forzar una carga si ese día tu cuerpo no está respondiendo igual.
+          </p>
+        </div>
+
+        <!-- Cintura y Postura -->
+        <div class="dashed-card">
+          <h3>🧍‍♀️ Cintura Visual & Postura</h3>
+          <p>
+            No podemos elegir específicamente de dónde pierde grasa nuestro cuerpo, por lo que no vamos a intentar "quemar grasa" únicamente de la cintura.
+          </p>
+          <p style="margin-top: 10px;">Para conseguir la apariencia armónica que buscas vamos a trabajar en conjunto:</p>
+          <ul class="styled-list">
+            <li>Desarrollo de glúteos y piernas (efecto reloj de arena)</li>
+            <li>Espalda y hombros para abrir la percha superior</li>
+            <li>Trabajo de abdomen profundo y estabilidad lumbo-pélvica</li>
+            <li>Alimentación adecuada y normocalórica</li>
+          </ul>
+          <p style="margin-top: 12px;">
+            El trabajo de espalda, hombros y abdomen también ayudará a desarrollar una estructura corporal más equilibrada y a trabajar sobre tu postura. No necesitamos eliminar el entrenamiento abdominal ni tener miedo de trabajar el abdomen.
+          </p>
+        </div>
+      </div>
+
+      <!-- Banner de Cita de Visión -->
+      <div class="cta-banner">
+        <p>“La constancia será mucho más importante que intentar conseguir resultados de un día para otro.”</p>
+      </div>
+
+      <!-- Tarjeta Objetivo a Largo Plazo con líneas intercaladas -->
+      <div class="dashed-card">
+        <h3>🎯 Nuestro Objetivo a Largo Plazo</h3>
+        <p>
+          No quiero que simplemente vengas al gimnasio a completar ejercicios. Quiero que cada semana intentemos mejorar algo: Mejor técnica. Más control. Más repeticiones cuando corresponda. Un poco más de peso cuando estés preparada. Mejor rendimiento.
+        </p>
+        <p style="margin-top: 12px;"><strong>El objetivo a largo plazo será conseguir:</strong></p>
+        <ul class="styled-list">
+          <li>Más desarrollo de glúteos y firmeza.</li>
+          <li>Piernas más fuertes, tonificadas y proporcionadas.</li>
+          <li>Mejor postura y control corporal diario.</li>
+          <li>Una apariencia de cintura visualmente más pequeña y definida.</li>
+          <li>Mayor fuerza, confianza y rendimiento físico.</li>
+        </ul>
+      </div>
+
+      <!-- FIRMA COACH CENTRADA -->
+      <div class="coach-signature">
+        <div class="coach-label">Coach Personal</div>
+        <div class="coach-name">Leonardo Escobar</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Lower Body Atelier · Diseñado exclusivamente para Arantza · Coach Leonardo Escobar
+    </div>
+  </footer>
+
+  <!-- Script para alternar temas Oscuro / Claro -->
+  <script>
+    (function () {
+      const toggleBtn = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      
+      // Preferencia inicial o tema actual
+      let currentTheme = root.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      root.setAttribute('data-theme', currentTheme);
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', currentTheme);
+        });
+      }
+    })();
+  </script>
+
+  <!-- MAXIMUM SECURITY DRM JS -->
+  <div class="watermark-drm"></div>
+  <div class="drm-blackout" id="drm-blackout">PROTECCIÓN ANTI-COPIA ACTIVADA<br><br>No puedes tomar capturas ni salir de la ventana.</div>
+  
+  <script>
+    document.addEventListener('contextmenu', e => { e.preventDefault(); return false; });
+    
+    document.addEventListener('keydown', e => {
+      if (e.ctrlKey || e.metaKey) {
+        const k = e.key.toLowerCase();
+        if (['p', 's', 'c', 'a', 'u', 'i', 'j'].includes(k)) {
+          e.preventDefault();
+        }
+      }
+      if (e.key === 'PrintScreen' || e.key === 'F12') {
+        navigator.clipboard.writeText('Contenido Protegido');
+        e.preventDefault();
+      }
+    });
+
+    const blackout = document.getElementById('drm-blackout');
+    
+    window.addEventListener('blur', () => {
+      blackout.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+    
+    window.addEventListener('focus', () => {
+      blackout.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        blackout.style.display = 'flex';
+      } else {
+        blackout.style.display = 'none';
+      }
+    });
+
+    document.addEventListener('dragstart', e => e.preventDefault());
+  </script>
+  </div>
+    <script>
+      // Si el navegador corre Javascript (Safari/Chrome reales), ocultamos la alerta y mostramos el contenido.
+      document.getElementById('js-warning').style.display = 'none';
+      document.getElementById('secure-content').style.display = 'block';
+    </script>
+    </body>
+</html>
